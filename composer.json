@@ -1,7 +1,7 @@
 {
     "name": "yevhenii/code-checker",
     "description": "phpmd, mess detector",
-    "type": "composer-plugin",
+    "type": "library",
     "authors": [
         {
             "name": "yevhenii.riabyi",
