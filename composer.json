@@ -1,7 +1,7 @@
 {
     "name": "yevhenii/code-checker",
     "description": "phpmd, mess detector",
-    "type": "library",
+    "type": "composer-plugin",
     "authors": [
         {
             "name": "yevhenii.riabyi",
@@ -11,5 +11,10 @@
     "require": {
         "phpmd/phpmd": "^2.6",
         "squizlabs/php_codesniffer": "^3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yevhenii\\": "/"
+        }
     }
 }
