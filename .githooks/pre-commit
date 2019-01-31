@@ -1,0 +1,24 @@
+#!/bin/sh
+
+#some colors
+t_green='\E[40;38;5;82m'
+t_warning='\E[00;33m\033[1m'
+t_rst='\033[0m'
+t_error='\E[00;31m\033[1m'
+t_bold='\E[1m\033[1m'
+
+export TOP_PID=$$
+printf "${t_bold}${t_green}[pre-commit hook...]${t_rst}${t_warning}\n"
+php ./vendor/bin/phpmd app/ text ruleset.xml --minimumpriority 2
+if [ $? -ne 0 ]
+then
+    printf "${t_bold}${t_error}PHP CodeSniffer Commit Abort${t_rst}\n"
+     exit 1
+fi
+php ./vendor/bin/phpcbf --standard=PSR2 app/
+if [ $? -ne 0 ]
+then
+    git add --all
+    printf "${t_bold}${t_warning}PHP Code Beautifier and Fixer Report Foud Something...${t_rst}\n"
+fi
+printf "${bold}All GOOD!${t_rst}\n"
