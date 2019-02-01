@@ -1,5 +1,3 @@
-For pre-commit checks there are provided a hook, add it by running:
-
 ## Install
 
 1) In your terminal:
